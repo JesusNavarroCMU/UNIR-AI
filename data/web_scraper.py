@@ -63,16 +63,13 @@ for line in file:
 			arreglo_salida_variables.append("URL")
 			arreglo_salida_variables.append("PhoneName")
 			for cat in categories:
-				catName = cat.text.strip()
 				area=''
-				if catName=='' and cat.parent.parent.name=="table":
-						area=cat.parent.parent.th.text.strip()
-				if catName=='':
-					unkownVariableCounter+=1
-					if area!='':
-						catName=area+str(unkownVariableCounter)
-					else:
-						catName='UnknownVar'+str(unkownVariableCounter)
+				if cat.parent.parent.name=="table":
+					area=cat.parent.parent.th.text.strip()
+				if len(area):
+					catName=area+' | '+cat.text.strip()
+				else:
+					catName=cat.text.strip()
 				arreglo_salida_variables.append(catName)
 			arreglo_salida_variables.append("PhoneImage")
 			arreglo_salida_valores.append(url.strip())
@@ -89,7 +86,7 @@ for line in file:
 					arreglo_salida_valores.append(catValue)
 			arreglo_salida_valores.append(img.strip())
 
-			salida = open("salida.json","a+",encoding="utf-8")
+			salida = open("telefonos.json","a+",encoding="utf-8")
 			salida.write(f"{json.dumps(dict(zip(arreglo_salida_variables, arreglo_salida_valores)))}"+"\n")
 			salida.close()
 			time.sleep(3)
