@@ -1,0 +1,17 @@
+Obtencion y Procesamiento de datos
+
+1. Bajar los datos corriendo el archivo data/web_scraper.py (Necesito actualizarlo)
+
+2. Tener los datos disponibles con el nombre telefonos.json en ese formato en el folder /data
+
+3. Ejecutar en orden los siguientes scripts de python en el folder /procesamiento
+
+   a) VectorizaTelefonos.py
+   b) GeneraEstadisticasTelefonos.py
+   c) GeneraBusquedaTelefonos.py
+
+4. El script BuscaTelefono.py es un ejemplo de como se puede buscar un telefono
+   Necesita de los archivos generados en el paso anterior, sobre todo
+   DatasetTelefonosActivos.csv
+   DatasetTelefonosBusqueda.csv
+
