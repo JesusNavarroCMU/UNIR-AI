@@ -16,14 +16,14 @@
         <div class="container1">
             <div class="menubar">
                 <div class="logo">
-                    <img src="/static/logo_animated.gif" width="400px">
+                    <img src="/static/logo.png" width="400px">
                 </div>
                 <nav>
                     <ul>
                         <li><a href="index"> Home </a></li>
-                        <li><a href="catalogo.html"> Informaci&oacute;n </a></li>
+                        <!--li><a href="catalogo.html"> Informaci&oacute;n </a></li>
                         <li><a href=""> Contacto </a></li>
-                        <li><a href="recomendacion"> Recomendaci&oacute;n </a></li>
+                        <li><a href="recomendacion"> Recomendaci&oacute;n </a></li-->
                     </ul>
                 </nav>
             </div>
@@ -34,7 +34,7 @@
                         <h1> Hola. D&eacute;janos saber un poco sobre lo que esperas en tu nuevo dispositivo.<br><br>
                             Contesta las siguientes preguntas y te ayudaremos a elegir uno.
                         </h1>
-                        <form method="POST" action="/product">
+                        <form id="myForm" method="POST" action="/product">
                         <div class="inputBox">
                             Rango de precio esperado: 
                             <select name="precio" id="Precio Fabrica"><option value="">Por favor elige una categor&iacute;a</option><option value="Bajo">Bajo</option> <option value="Medio">Medio</option><option value="Alto">Alto</option></select>
@@ -120,7 +120,12 @@
                             <select name="sim" id="Tiene SIM"><option value="">Por favor elige</option><option value="Si">S&iacute;</option> <option value="No">No</option></select>
                         </div>
                         <div class="inputBox">
-                            <input type="submit" id="bot" name="bot" value="Registrarse"/>
+                            <nav><ul>
+                                <li>
+                            <input type="submit" id="bot" name="bot" value="Buscar"/>
+                                 </li>
+                                </ul>
+                            </nav>
                         </div>
                         </form>
                     </div>

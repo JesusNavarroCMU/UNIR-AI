@@ -5,7 +5,8 @@
 }
 
 body{
-    font-family: "Segoe UI";
+    font-family: "Monospace";
+    color: #ffffff;
 }
 
 .body2{
@@ -16,7 +17,7 @@ body{
     justify-content: center;
     align-items: center;
     padding-bottom: 100px;
-    font-family: "Segoe UI";
+    font-family: "Monospace";
 }
 
 .menubar{
@@ -41,8 +42,9 @@ nav ul li{
 
 nav a{
     display: inline-block;
-    color: #03e9f4;
-    font-size: 10px;
+    background: #373ea0;
+    color: #ffffff;
+    font-size: 25px;
     text-decoration: none;
     text-transform: uppercase;
     /*overflow: hidden; */
@@ -54,12 +56,12 @@ nav a{
 }
 
 nav a:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 5px #373ea0,
+                0 0 25px #373ea0,
+                0 0 50px #373ea0,
+                0 0 150px #373ea0;
 }
 
 a{
@@ -85,8 +87,17 @@ p{
 }
 
 .col2{
+    font: Verdana;
+    color: #000000;
     flex-basis: 50%;
     min-width: 100px
+}
+
+.col2 p{
+    font: Verdana;
+    color: #000000;
+    font: Verdana;
+    color: #000000;
 }
 
 .col2 img{
@@ -95,14 +106,18 @@ p{
 }
 
 .col2 h1{
-    font-size: 50px;
+    font: Tahoma;
+    color: #000000;
+    font-size: 30px;
     line-height: 60px;
     margin: 25px 0;
 }
 
 .but{
     display: inline-block;
-    color: #03e9f4;
+    border: 1;
+    background: #373ea0;
+    color: #ffffff;
     font-size: 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -114,20 +129,20 @@ p{
 }
 
 .but:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 5px #373ea0,
+                0 0 25px #373ea0,
+                0 0 50px #373ea0,
+                0 0 150px #373ea0;
 }
 
 .header{
-    background: radial-gradient(#000040 , #000000);
-    color: #ffffff;
+    color: #000000;
 }
 
 .container{
+    font-family: "Monospace";
     position: relative;
     width: 700px;
     min-height: 2400px;
@@ -152,9 +167,9 @@ p{
     left: -5px;
     right: -5px;
     bottom: -5px;
-    background: linear-gradient(45deg, #ff0047, #6eff00);
+    background: linear-gradient(45deg, #373ea0, #060e01);
     pointer-events: none;
-    animation: animate 10s linear infinite;
+    
 }
 
 @keyframes animate{
@@ -167,6 +182,7 @@ p{
 }
 
 .form{
+    font-family: "Monospace";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -183,11 +199,13 @@ p{
 }
 
 .form .inputBox{
+    font-family: "Monospace";
     width: 100%;
     margin-top: 30px;
 }
 
 .form .inputBox input{
+    font-family: "Monospace";
     width: 100%;
     background: transparent;
     border: none;
@@ -196,10 +214,11 @@ p{
     font-size: 20px;
     color: #ffffff;
     padding: 5px 0;
-    font-family: "Segoe UI";
+    font-family: "Monospace";
 }
 
 select{
+    font-family: "Monospace";
     width: 650px;
     padding: 10px 20px;
     cursor: pointer;
@@ -209,7 +228,7 @@ select{
     color: #ffffff;
     outline: none;
     font-size: 18px;
-    font-family: "Segoe UI";
+    font-family: "Monospace";
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -221,17 +240,16 @@ select{
 }
 
 select::-ms-expand{
+    font-family: "Monospace";
     display: none;
 
 }
 
 select:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    font-family: "Monospace";
+    color: #ffffff;
+    background: #050801;
+
 }
 
 
@@ -241,7 +259,7 @@ select:hover{
 
 .form .inputBox input[type="button"]{
     display: inline-block;
-    color: #03e9f4;
+    color: #373ea0;
     font-size: 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -253,12 +271,12 @@ select:hover{
 }
 
 .form .inputBox input[type="button"]:hover{
-    background: #03e9f4;
+    background: #373ea0;
     color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    box-shadow: 0 0 5px #373ea0,
+                0 0 25px #373ea0,
+                0 0 50px #373ea0,
+                0 0 150px #373ea0;
 }
 
 .form p{

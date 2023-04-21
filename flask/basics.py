@@ -16,63 +16,76 @@ def home():
 def recomendacion():
     return render_template('recomendacion.html')
 
-
 @app.route('/product', methods=['POST','GET'])
 def product():
-    #if request.method == "POST":
-    precio = request.form['precio']
-    almacenamiento = request.form['almacenamiento']
-    bateria = request.form['bateria']
-    memoriaAdicional = request.form['memoriaAdicional']
-    camara = request.form['camara']
-    camaraVideo = request.form['camaraVideo']
-    selfie = request.form['selfie']
-    selfieVideo = request.form['selfieVideo']
-    procesamiento = request.form['procesamiento']
-    ram = request.form['ram']
-    resolucion = request.form['resolucion']
-    tamanio = request.form['tamanio']
-    huella = request.form['huella']
-    rostro = request.form['rostro']
-    reciente = request.form['reciente']
-    audifonos = request.form['audifonos']
-    bluetooth = request.form['bluetooth']
-    radio = request.form['radio']
-    localizacion = request.form['localizacion']
-    nfc = request.form['nfc']
-    sim = request.form['sim']
-    # Validacion de la info
-    # Obtienes el nuevo producto
-    with open('cat_dict_filtros.json') as f:
+   
+    with open('../procesamiento/cat_dict_filtros.json') as f:
         cat_dict_filtros = json.load(f)
-
-    print(json.dumps(cat_dict_filtros, indent=4))
 
     ## Primer Archivo - Para buscar los telefonos
 
-    dataBusqueda = pd.read_csv("DatasetTelefonosBusqueda.csv")
+    dataBusqueda = pd.read_csv("../procesamiento/DatasetTelefonosBusqueda.csv")
 
     ## Segundo Arhcivo - Para Obtener los detalles del telefono
 
-    dataModel = pd.read_csv("DatasetTelefonosActivos.csv")
+    dataModel = pd.read_csv("../procesamiento/DatasetFormateado.csv")
 
-    res = dataBusqueda[(dataBusqueda["Precio Fabrica"]==precio) \
-             & (dataBusqueda["Almacenamiento"]==almacenamiento)
-            & (dataBusqueda["Bateria"]==bateria)
-            & (dataBusqueda["Tiene Memoria Adicional"]==memoriaAdicional)
-            & (dataBusqueda["Camara"]==camara)
-            & (dataBusqueda["Camara Video"]==camaraVideo)
-            & (dataBusqueda["Selfie"]==selfie)
-            & (dataBusqueda["Selfie Video"]==selfieVideo)
-            & (dataBusqueda["Procesamiento"]==procesamiento)
-            & (dataBusqueda["RAM"]==ram)
-            & (dataBusqueda["Resolucion"]==resolucion)
-            & (dataBusqueda["Tiene Lector Huella"]==huella)
-            & (dataBusqueda["Reconocimiento Rostro"]==rostro)][["NombreTelefono"]]
+    lista_parametros = ["precio",
+                     "almacenamiento",
+                     "bateria",
+                     "memoriaAdicional",
+                     "camara",
+                     "camaraVideo",
+                     "selfie",
+                     "selfieVideo",
+                     "procesamiento",
+                     "ram",
+                     "resolucion",
+                     "tamanio",
+                     "huella",
+                     "rostro",
+                     "reciente",
+                     "audifonos",
+                     "bluetooth",
+                     "radio",
+                     "localizacion",
+                     "nfc",
+                     "sim"]
+
+    lista_campos = ["Precio Fabrica",
+            "Almacenamiento",
+            "Bateria",
+            "Tiene Memoria Adicional",
+            "Camara",
+            "Camara Video",
+            "Selfie",
+            "Selfie Video",
+            "Procesamiento",
+            "RAM",
+            "Resolucion",
+            "Tamanio",
+            "Tiene Lector Huella",
+            "Reconocimiento Rostro",
+            "Reciente",
+            "Tiene Audifonos",
+            "Tiene Bluetooth",
+            "Tiene Radio",
+            "Tiene Localizacion",
+            "Tiene NFC",
+            "Tiene SIM"]
+
+    str_busqueda=""
+    for i in range(len(lista_parametros)):
+        val_filtro = request.form[lista_parametros[i]]
+        if val_filtro!="":
+            str_busqueda+= " `"+lista_campos[i]+"`=='"+val_filtro+"' &"
+    str_busqueda=str_busqueda[:-1]
+
+    print(request.form)
+    print(str_busqueda)
+    res = dataBusqueda.query(str_busqueda)
     
     existe_en_res = dataModel["NombreTelefono"].isin(res["NombreTelefono"])
-    #print(dataModel[existe_en_res])
-    # printResult(dataModel[existe_en_res])
 
     dataResultado = dataModel[existe_en_res]
     products_list = dataResultado.values.tolist()
@@ -106,7 +119,7 @@ def product():
         individual_list.append(products_list[i][48])
         resultados_list.append(individual_list)
         
-    print(resultados_list)
+    #print(resultados_list)
     # return render_template('product.html', data=dataModel[existe_en_res])
     return render_template('product.html',
                            resultados_list = resultados_list,

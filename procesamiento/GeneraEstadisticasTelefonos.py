@@ -13,12 +13,10 @@ import re
 import json
 import pandas as pd
 
-df = pd.read_csv("DatasetLimpio.csv")
-
-dataModel = df[df["Disponible"]==1]
-
-with open("DatasetTelefonosActivos.csv", "w") as text_file:
-    text_file.write(dataModel.to_csv(index=False))
+dataModel = pd.read_csv("DatasetTelefonosActivos.csv")
+    
+with open('col_type_dict.json') as f:
+    col_type_dict = json.load(f)
     
 cat_dict = {
     "Info" : ["Disponible","Colores","ImagenTelefono","URL","Marca","Sistema Operativo"],
@@ -74,55 +72,6 @@ cat_dict_filtros = {
     "Selfie Video" : ["Baja","Media","Alta"] # Calidad
 }
 
-col_type_dict = {"Memoria GB": "Cont",
-"Audifonos":"Binaria",
-"Bateria mAh":"Cont",
-"Horas Bateria":"Cont",
-"Horas Llamada Bateria":"Cont",
-"Vida Bateria":"Cont",
-"Bluetooth":"Binaria",
-"Conector":"Categorica",
-"Camara MP":"Cont",
-"Num Camaras":"Categorica",
-"Video FPS":"Cont",
-"Video Pixeles":"Cont",
-"Disponible":"Binaria",
-"Marca":"Categorica",
-"Misc | Colors":"Categorica",
-"PhoneImage":"Info",
-"URL":"Info",
-"Lector Huella":"Binaria",
-"PhoneName":"Info",
-"GPS":"Binaria",
-"Sistema Operativo":"Categorica",
-"Tarjeta Memoria":"Binaria",
-"NFC":"Binaria",
-"Peso Gramos":"Cont",
-"Precio":"Cont",
-"CPU GHz":"Cont",
-"Procesadores":"Categorica",
-"Radio":"Binaria",
-"RAM GB":"Cont",
-"Anio Anuncio":"Categorica",
-"Dia Anuncio":"Info",
-"Mes Anuncio":"Info",
-"Rec Facial":"Binaria",
-"Resolucion Pixeles Alto":"Categorica",
-"Resolucion Pixeles Ancho":"Categorica",
-"Resolucion PPI":"Categorica",
-"Dimensiones":"Info",
-"Fecha Anuncio":"Info",
-"Resolucion Pixeles":"Info",
-"Teclado":"Binaria",
-"Num Selfie":"Categorica",
-"Selfie MP":"Cont",
-"Selfie Video FPS":"Cont",
-"Selfie Video Pixeles":"Cont",
-"SIM":"Binaria",
-"Alto":"Cont",
-"Ancho":"Cont",
-"Grueso":"Cont",
-"Tamano Pulgadas":"Cont"}
 
 def agregaCatColVal(dataCatRank, cat, col, peso, valor, posicion, valorFlt=-1.00 ):
     dataCatRank.loc[len(dataCatRank)] = [cat, col, peso, valor, valorFlt, posicion]
@@ -258,7 +207,7 @@ def agregaCategorias(cat_dict, df, dataCatRank):
                         nom_columnas.append(col[0])
                     else:
                         nom_columnas.append(col)
-                print(f"***** {nom_columnas}")
+                #print(f"***** {nom_columnas}")
                 dataScore[cat] = dataScore.apply(
                 lambda x: rankeaCategoria(
                         x, cat, nom_columnas, dataCatRank
@@ -266,7 +215,7 @@ def agregaCategorias(cat_dict, df, dataCatRank):
                 )
             else:
                 col_nombre = columnas[0]
-                print(col_nombre)
+                #print(col_nombre)
                 dataScore[cat] = dataScore.apply(
                     lambda x: rankeaCategoria(
                         x, cat, [col_nombre], dataCatRank
@@ -275,8 +224,7 @@ def agregaCategorias(cat_dict, df, dataCatRank):
     return dataScore
 
 dataScore = agregaCategorias(cat_dict, dataModel, dataCatRank)
-
-
+    
 with open("DatasetPropiedadesRankeadas.csv", "w") as text_file:
     text_file.write(dataCatRank.to_csv(index=False))
     
@@ -289,7 +237,3 @@ with open('cat_dict.json', 'w') as f:
     
 with open('cat_dict_filtros.json', 'w') as f:
     json.dump(cat_dict_filtros, f)
-    
-with open('col_type_dict.json', 'w') as f:
-    json.dump(col_type_dict, f)
-    

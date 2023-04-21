@@ -7,26 +7,24 @@
 
 </head>
 
-<body>
+<body background="">
 
     <div class="header"> <A name = "top"> </A>
         <div class="container1">
             <div class="menubar">
                 <div class="logo">
-                    <img src="/static/logo_animated.gif" width="400px">
+                    <img src="/static/logo.png" width="400px">
                 </div>
                 <nav>
                     <ul>
                         <li><a href="/index"> Home </a></li>
-                        <li><a href="catalogo.html"> Informaci&oacute;n </a></li>
-                        <li><a href=""> Contacto </a></li>
                         <li><a href="/recomendacion"> Recomendaci&oacute;n </a></li>
                     </ul>
                 </nav>
             </div>
 
             <div class="fila">
-                <h2> Nuestras recomendaciones para ti seg&uacute;n tus elecciones son: </h2>
+                <h2> Te tenemos {{length}} recomendaciones<p/></h2>
             </div>
 
             {% for i in range(0, length) %}

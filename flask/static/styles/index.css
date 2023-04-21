@@ -5,7 +5,8 @@
 }
 
 body{
-    font-family: "Segoe UI";
+    font-family: "Monospace";
+    color: #000000;
 }
 
 .menubar{
@@ -30,8 +31,9 @@ nav ul li{
 
 nav a{
     display: inline-block;
-    color: #03e9f4;
-    font-size: 10px;
+    background: #373ea0;
+    color: #ffffff;
+    font-size: 25px;
     text-decoration: none;
     text-transform: uppercase;
     /*overflow: hidden; */
@@ -43,12 +45,12 @@ nav a{
 }
 
 nav a:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 5px #373ea0,
+                0 0 25px #373ea0,
+                0 0 50px #373ea0,
+                0 0 150px #373ea0;
 }
 
 a{
@@ -74,8 +76,17 @@ p{
 }
 
 .col2{
+    font: Verdana;
+    color: #000000;
     flex-basis: 50%;
     min-width: 100px
+}
+
+.col2 p{
+    font: Verdana;
+    color: #000000;
+    font: Verdana;
+    color: #000000;
 }
 
 .col2 img{
@@ -84,14 +95,18 @@ p{
 }
 
 .col2 h1{
-    font-size: 50px;
+    font: Tahoma;
+    color: #000000;
+    font-size: 30px;
     line-height: 60px;
     margin: 25px 0;
 }
 
 .but{
     display: inline-block;
-    color: #03e9f4;
+    border: 1;
+    background: #373ea0;
+    color: #ffffff;
     font-size: 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -103,21 +118,20 @@ p{
 }
 
 .but:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 150px #03e9f4;
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 5px #373ea0,
+                0 0 25px #373ea0,
+                0 0 50px #373ea0,
+                0 0 150px #373ea0;
 }
 
 .header{
-    background: radial-gradient(#000040 , #000000);
-    color: #ffffff;
+    
+    color: #000000;
 }
 
 .parte2{
-    background: radial-gradient(#0a3808 , #000000);
     color: #ffffff;
     padding-left: 10px;
     padding-right: 10px;
@@ -157,6 +171,7 @@ table {
 }
 
 .title{
+    color: #000000;
     text-align: center;
     margin: 0 auto 80 px;
     position: relative;
@@ -169,7 +184,6 @@ table {
 
 .fotoscds img{
     max-width: 15%;
-    
     padding-left: 5x;
     padding-right: 5px;
 }
@@ -181,6 +195,11 @@ table {
     padding-right: 10px;
     padding-top: 30px;
     padding-bottom: 70px;
+    text-align: center;
+}
+
+.parte3 h3{
+    color: #ffffff;
     text-align: center;
 }
 
