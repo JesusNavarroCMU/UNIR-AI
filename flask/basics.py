@@ -16,6 +16,10 @@ def home():
 def recomendacion():
     return render_template('recomendacion.html')
 
+@app.route('/criterio', methods=['POST','GET'])
+def criterio():
+    return render_template('criterio.html')
+
 @app.route('/product', methods=['POST','GET'])
 def product():
    

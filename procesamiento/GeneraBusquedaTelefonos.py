@@ -6,6 +6,8 @@ import seaborn as sns
 import math
 import datetime as dt
 import statistics 
+import copy
+
 
 with open('cat_dict.json') as f:
     cat_dict = json.load(f)
@@ -79,17 +81,19 @@ def obtenDataBusqueda(dataScore, dataCatRank):
                         x, cat, segmentos, min_val, max_val, mean_val, std_val, columnaCategorica
                          ), axis=1
             )
-    for col in columnas_bus:
-        if col not in cat_dict_filtros and col not in cat_dict_filtros["Info"] \
-        and col not in cat_dict_filtros["Llave"]:
-            dataBusqueda.drop(columns = [col], inplace = True)
     return dataBusqueda
 
 dataBusqueda = obtenDataBusqueda(dataScore, dataCatRank)
 
+dataTelefonosCategorizacion = copy.deepcopy(dataBusqueda)
+
+for col in dataBusqueda.columns:
+        if col not in cat_dict_filtros and col not in cat_dict_filtros["Info"] \
+        and col not in cat_dict_filtros["Llave"]:
+            dataBusqueda.drop(columns = [col], inplace = True)
+
 with open("DatasetTelefonosBusqueda.csv", "w") as text_file:
     text_file.write(dataBusqueda.to_csv(index=False))
-
-for i in dataBusqueda.columns:
-    if i not in cat_dict_filtros["Llave"] and i not in cat_dict_filtros["Info"]:
-        print(dataBusqueda[i].value_counts(dropna=False))
+    
+with open("DatasetTelefonosCategorizacion.csv", "w") as text_file:
+    text_file.write(dataTelefonosCategorizacion.to_csv(index=False))
